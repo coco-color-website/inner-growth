@@ -1,0 +1,422 @@
+:root {
+  --bg: #faf7f2;
+  --bg-soft: #fff9f4;
+  --ink: #4a403a;
+  --ink-light: #7d726a;
+  --rose: #f3d2c9;
+  --rose-deep: #e8b4a8;
+  --sage: #d4e4d1;
+  --sage-deep: #a8c6a3;
+  --cream: #fdf6e3;
+  --lavender: #e6e0ec;
+  --peach: #ffe5d4;
+  --sky: #d8eef5;
+  --radius: 22px;
+  --shadow: 0 8px 28px rgba(74, 64, 58, 0.08);
+  --shadow-hover: 0 14px 40px rgba(74, 64, 58, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.9;
+  font-size: 17px;
+  background-image:
+    radial-gradient(circle at 10% 5%, rgba(243, 210, 201, 0.35) 0%, transparent 30%),
+    radial-gradient(circle at 95% 20%, rgba(212, 228, 209, 0.35) 0%, transparent 30%),
+    radial-gradient(circle at 50% 95%, rgba(253, 246, 227, 0.6) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* 导航 */
+.toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(125, 114, 106, 0.08);
+  padding: 14px 0;
+}
+
+.toc-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.toc-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.toc-link {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.toc-link:hover,
+.toc-link.active {
+  color: #5a3d36;
+  background: var(--rose);
+  box-shadow: var(--shadow);
+}
+
+/* Hero */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 60px;
+}
+
+.hero-content {
+  max-width: 680px;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-pretitle {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  letter-spacing: 0.15em;
+  margin: 0 0 16px;
+}
+
+.hero-title {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: clamp(3rem, 9vw, 5rem);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #7d5e53;
+  margin: 20px 0 0;
+  font-weight: 600;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose-deep), var(--sage-deep));
+  border-radius: 3px;
+  margin: 32px auto;
+}
+
+.hero-intro {
+  font-size: 1rem;
+  color: var(--ink-light);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* 内容区 */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 100px;
+}
+
+.stage {
+  position: relative;
+  margin-bottom: 70px;
+  display: flex;
+  gap: 20px;
+}
+
+.stage-marker {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--cream) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 1rem;
+  color: #5a3d36;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 90px;
+}
+
+.stage-card {
+  flex: 1;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  padding: 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  animation: fadeUp 0.8s ease both;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.stage-title {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 18px;
+  color: #5a3d36;
+  line-height: 1.4;
+}
+
+.stage-lead {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  margin: 0 0 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(125, 114, 106, 0.2);
+}
+
+.stage-subtitle {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 1.15rem;
+  color: #6b5348;
+  margin: 32px 0 14px;
+  font-weight: 600;
+}
+
+.stage-card p {
+  margin: 0 0 18px;
+}
+
+/* 引用块 */
+.quote-box {
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 24px 0;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-box::before {
+  content: """;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 4rem;
+  color: rgba(90, 61, 54, 0.08);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.quote-box p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-box p + p {
+  margin-top: 12px;
+}
+
+.quote-note {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  border-top: 1px solid rgba(90, 61, 54, 0.08);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.quote-box.rose { background: linear-gradient(135deg, var(--rose) 0%, #fff 100%); }
+.quote-box.sage { background: linear-gradient(135deg, var(--sage) 0%, #fff 100%); }
+.quote-box.lavender { background: linear-gradient(135deg, var(--lavender) 0%, #fff 100%); }
+.quote-box.peach { background: linear-gradient(135deg, var(--peach) 0%, #fff 100%); }
+.quote-box.sky { background: linear-gradient(135deg, var(--sky) 0%, #fff 100%); }
+
+.key-points {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin: 22px 0 28px;
+  border: 1px solid rgba(168, 198, 163, 0.3);
+}
+
+.key-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.key-point:last-child {
+  margin-bottom: 0;
+}
+
+.key-point p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.key-check {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #3d5a38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.key-dot {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--rose);
+  color: #5a3d36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* 要点列表 */
+.point-list {
+  margin: 20px 0 0;
+  padding-left: 22px;
+}
+
+.point-list li {
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+.point-list li::marker {
+  color: var(--rose-deep);
+  font-size: 1.1em;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--cream) 100%);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 28px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--sage-deep);
+}
+
+.highlight-box p {
+  margin: 0;
+  font-size: 1.08rem;
+  color: #3d4a38;
+  line-height: 1.85;
+}
+
+.highlight-box strong {
+  color: #2f3d2a;
+}
+
+/* 最终强调框 */
+.final-box {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--cream) 100%);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 28px;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #5a3d36;
+  box-shadow: var(--shadow);
+}
+
+.final-box p {
+  margin: 0;
+}
+
+/* 页脚 */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px 60px;
+  color: var(--ink-light);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(125, 114, 106, 0.1);
+}
+
+/* 动画 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 移动端 */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding-top: 100px;
+  }
+
+  .stage {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .stage-marker {
+    position: relative;
+    top: auto;
+    width: 42px;
+    height: 42px;
+    font-size: 0.9rem;
+  }
+
+  .stage-card {
+    padding: 26px;
+  }
+
+  .quote-box {
+    padding: 20px 22px;
+  }
+
+  .toc-link {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
