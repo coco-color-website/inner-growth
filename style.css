@@ -208,6 +208,16 @@ body {
   margin: 0 0 18px;
 }
 
+.quote-box.title-aside {
+  margin: -10px 0 24px;
+  padding: 18px 24px;
+}
+
+.quote-box.title-aside p {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
 /* 引用块 */
 .quote-box {
   border-radius: var(--radius);
