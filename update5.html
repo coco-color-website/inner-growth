@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>更新5 · 本自具足向内求</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .update5-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 60px;
+      background: linear-gradient(180deg, rgba(253,246,227,0.5) 0%, rgba(250,247,242,0) 100%);
+    }
+    .update5-hero-content {
+      max-width: 760px;
+      animation: fadeUp 1s ease both;
+    }
+    .update5-hero-pretitle {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      letter-spacing: 0.15em;
+      margin: 0 0 16px;
+    }
+    .update5-hero-title {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .update5-hero-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: #7d5e53;
+      margin: 24px 0 0;
+      font-weight: 600;
+      line-height: 1.7;
+    }
+    .update5-hero-divider {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose-deep), var(--sage-deep));
+      border-radius: 3px;
+      margin: 32px auto;
+    }
+
+    .preface-section {
+      padding: 50px 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(253,246,227,0.4) 100%);
+      border-bottom: 2px solid rgba(232, 180, 168, 0.3);
+    }
+    .preface-section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .preface-section h2 {
+      font-size: 1.5rem;
+      color: #5a3d36;
+      margin: 0 0 24px;
+    }
+    .preface-core {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+      margin-top: 28px;
+    }
+    .preface-core-item {
+      background: rgba(255,255,255,0.85);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      box-shadow: var(--shadow);
+      border-left: 6px solid var(--rose-deep);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.75;
+    }
+    .preface-core-item strong {
+      color: #8b4a3a;
+    }
+
+    .theory-section {
+      padding: 50px 24px;
+      background: rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(125, 114, 106, 0.1);
+    }
+    .theory-section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .theory-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-top: 5px solid var(--rose-deep);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .theory-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .theory-card:nth-child(2) { border-top-color: var(--sage-deep); }
+    .theory-card:nth-child(3) { border-top-color: var(--lavender); }
+    .theory-card:nth-child(4) { border-top-color: var(--peach); }
+    .theory-card:nth-child(5) { border-top-color: var(--sky); }
+    .theory-card:nth-child(6) { border-top-color: #c9b8d4; }
+    .theory-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      color: #5a3d36;
+    }
+    .theory-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--ink-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed var(--ink-light);
+      transition: color 0.2s ease;
+    }
+    .back-link:hover {
+      color: #5a3d36;
+    }
+
+    @media (max-width: 640px) {
+      .preface-core-item {
+        padding: 18px 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header class="update5-hero" id="top">
+    <div class="update5-hero-content">
+      <p class="update5-hero-pretitle">从向内求与爱自己的角度读懂</p>
+      <h1 class="update5-hero-title">本自具足向内求</h1>
+      <p class="update5-hero-subtitle">西瓜芝麻 · 创可贴理论 · 天秤理论 · 锦上添花理论 · 糖和解药</p>
+      <div class="update5-hero-divider"></div>
+      <p class="update5-hero-subtitle" style="font-size: clamp(1rem, 2.8vw, 1.25rem); font-weight: 500;">这世上我唯一需要在意的是我的感受。</p>
+      <a class="back-link" href="index.html">← 回到内在生长主页</a>
+    </div>
+  </header>
+
+  <!-- 写在前面 -->
+  <section class="preface-section">
+    <div class="preface-section-inner">
+      <h2>写在前面：记住这两点</h2>
+      <p style="color: var(--ink-light); font-size: 1.05rem; line-height: 1.85; margin: 0;">
+        整篇更新5的内容，说到底就是两个核心认知。当你真正理解它们，外求自然就停了，向内求自然就发生了。
+      </p>
+      <div class="preface-core">
+        <div class="preface-core-item">
+          1. 你明白<strong>任何人的爱都不会超过你自己</strong>的。
+        </div>
+        <div class="preface-core-item">
+          2. <strong>任何时候都一定</strong>把对爱的期许、被爱的需要、赚钱的责任，<strong>只完完全全放在自己身上</strong>。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六个理论 -->
+  <section class="theory-section" id="theories">
+    <div class="theory-section-inner">
+      <h2 class="stage-title" style="text-align: center; margin-bottom: 10px;">这六个词在说什么</h2>
+      <p style="text-align: center; color: var(--ink-light); margin: 0 0 28px;">它们是从不同角度描述同一个道理：别向外求，回到自己。</p>
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>🍉 西瓜芝麻</h3>
+          <p>别为外界零碎的关注、评价、情绪斤斤计较，把注意力放回自己身上。</p>
+        </div>
+        <div class="theory-card">
+          <h3>🩹 创可贴理论</h3>
+          <p>他人的爱只是暂时止疼的创可贴，贴不住内心真正的缺口。</p>
+        </div>
+        <div class="theory-card">
+          <h3>⚖️ 天秤理论</h3>
+          <p>你越向外求，天平越失衡；只有向内求，才能重新稳住自己。</p>
+        </div>
+        <div class="theory-card">
+          <h3>✨ 锦上添花理论</h3>
+          <p>外界的爱只是点缀，你自己才是那匹锦缎。没有锦，花无处可添。</p>
+        </div>
+        <div class="theory-card">
+          <h3>🍬 糖和解药</h3>
+          <p>别人给的是糖，甜一下就没；自己给自己的爱，才是治病的解药。</p>
+        </div>
+        <div class="theory-card">
+          <h3>🌱 本自具足向内求</h3>
+          <p>你本来就拥有一切答案。停止外求，回到自己，丰盛自然来。</p>
+        </div>
+      </div>
+      <img class="stage-image" src="images/update5-theory.png" alt="手绘知识笔记：天平对比外物与内里">
+    </div>
+  </section>
+
+  <main class="content">
+    <!-- 第一章：自爱 -->
+    <section class="stage" id="love">
+      <div class="stage-marker"><span>01</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">自己对自己的爱，才是珍宝</h2>
+
+        <img class="stage-image" src="images/update5-selflove.png" alt="手绘知识笔记：手捧发光爱心">
+
+        <div class="quote-box rose">
+          <p><strong>“他人的爱是破铜烂铁，他人的爱不算什么，彻底不屑于他人的爱，自己对自己的爱才是珍宝。”</strong></p>
+        </div>
+
+        <p class="stage-lead">
+          一切的卡点是：太把别人的爱当回事，却不把自己对自己的爱当回事放第一。
+        </p>
+
+        <h3 class="stage-subtitle">▎别人的爱为什么不值钱</h3>
+        <ul class="point-list">
+          <li>任何人的爱都<strong>不够纯粹、不稳定、不可靠</strong>，所以不值得你太当回事。</li>
+          <li><strong>任何人的爱都取代不了缺位的自爱</strong>，只有自己能真正填补那个缺口。</li>
+          <li>永远置顶自己对自己的爱的位置，永远把自爱排第一，<strong>人生首先要做的就是爱自己</strong>。</li>
+        </ul>
+
+        <div class="quote-box sage">
+          <p><strong>“喜欢自己，比被别人喜欢和喜欢别人重要一万倍一亿倍。”</strong></p>
+        </div>
+
+        <h3 class="stage-subtitle">▎受伤的真正意义</h3>
+        <p>
+          受伤不是惩罚，而是提醒。爱的目的，是通过受伤让你看到：<strong>任何人的爱都不会超过自爱</strong>，从而学会停止爱别人、停止向别人索取爱。
+        </p>
+        <p>
+          别人那里没有你要的东西，所以向外求爱永远求而不得。<strong>回头爱自己，就是向内求</strong>，这是速效解药。
+        </p>
+
+        <div class="insight-box">
+          <h4>💡 一句话总结</h4>
+          <p>求财者风生水起，求被爱者一败涂地，自爱者财爱双收。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二章：外求 -->
+    <section class="stage" id="external">
+      <div class="stage-marker"><span>02</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">向外求，是没有用的</h2>
+
+        <img class="stage-image" src="images/update5-hero.png" alt="手绘知识笔记：人物从灰暗外求迷雾走向内在花园">
+
+        <div class="quote-box rose">
+          <p><strong>“向外求是没有用的。外面的都是虚的，都是泡沫。”</strong></p>
+        </div>
+
+        <p class="stage-lead">
+          外求来的永远无法得到真正满足。从外界抓东西不停地补，只会越补越空。
+        </p>
+
+        <h3 class="stage-subtitle">▎为什么要彻底放弃外求</h3>
+        <ul class="point-list">
+          <li><strong>寄望于别人是没有意义的。</strong>总寄望于别人，才会永远停留在原地。</li>
+          <li><strong>外界没有你想抓取的东西，你想要的都在内里。</strong></li>
+          <li><strong>向外求永远会感觉虚，向内求才能感觉到扎扎实实。</strong></li>
+          <li>寄望于别人便会忘记寄望于自己；<strong>捡起自爱，无敌自爱是解药</strong>。</li>
+        </ul>
+
+        <div class="quote-box lavender">
+          <p><strong>人只能向内求，只能靠自己。钱和爱也只能自己给自己。</strong><br><span style="font-size: 1.1rem;">“缺爱就爱自己，缺钱就赚钱。”</span></p>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>这段总结：</strong>彻底放弃外求，因为意识到向外求没用。转而只极致内求。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第三章：方法论 -->
+    <section class="stage" id="method">
+      <div class="stage-marker"><span>03</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">向内扎根：爱自己方法论</h2>
+
+        <img class="stage-image" src="images/update5-method.png" alt="手绘知识笔记：向内求工具包">
+
+        <div class="quote-box rose">
+          <p><strong>“任何时候都一定把对爱的期许、被爱的需要、赚钱的责任，只完完全全放在自己身上。”</strong></p>
+        </div>
+
+        <p class="stage-lead">
+          你之所以每天没做什么就很累、能量低、能量外漏、感到内心匮乏空虚，是因为你正在不停向外求、与外界纠缠、因此内耗。
+        </p>
+
+        <h3 class="stage-subtitle">▎转机：从意识到转向</h3>
+        <p>
+          这时要清醒地意识到：<strong>他人的爱总是不够不可靠的，而自爱才是珍宝</strong>。转而竭力向内求、向内扎根，才能彻底弥补空虚和匮乏。
+        </p>
+
+        <h3 class="stage-subtitle">▎实操方法</h3>
+        <div class="key-points">
+          <div class="key-point">
+            <span class="key-check">✓</span>
+            <p><strong>缺爱就爱自己。</strong>自己给自己安全感、肯定和照顾。</p>
+          </div>
+          <div class="key-point">
+            <span class="key-check">✓</span>
+            <p><strong>缺钱就做事、赚钱。</strong>把精力收回来创造价值。</p>
+          </div>
+          <div class="key-point">
+            <span class="key-check">✓</span>
+            <p><strong>狠狠爱自己，直到发展出真正爱自己的能力。</strong></p>
+          </div>
+        </div>
+
+        <div class="quote-box peach">
+          <p><strong>“缺爱疯狂爱自己，缺钱疯狂做事疯狂赚钱。”</strong><br><span class="quote-note">这是非常重要的实操方法，能一秒走出内耗。</span></p>
+        </div>
+
+        <h3 class="stage-subtitle">▎向内求的好处</h3>
+        <ul class="point-list">
+          <li>向内求放弃期待他人，会<strong>无比强大、无比自由、节省时间精力、无比有行动力、无比稳、瞬间平静、不再痛苦、能量聚焦</strong>。</li>
+          <li><strong>向外求只有求而不得的痛苦，开始向内求会无敌爽、无敌稳、无敌强、无敌自由。</strong></li>
+          <li><strong>向内求得的每一个瞬间，都会转化为内在的力量和丰盛。</strong></li>
+          <li>向内求力量感的来源都是我自己，从内心获得力量，无敌自由、无敌有安全感。</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>这段总结：</strong>转而只极致彻底向内求。向外求是二类的人生，向内求是一类的人生。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第四章：关于自爱 -->
+    <section class="stage" id="selflove">
+      <div class="stage-marker"><span>04</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">关于自爱</h2>
+
+        <div class="quote-box rose">
+          <p><strong>“钱会顺着内心缺爱、不自爱的缺口，不断向外流失。”</strong></p>
+        </div>
+
+        <p class="stage-lead">
+          钱和爱是同一种能量的两种表现。内心有缺口，爱留不住，钱也留不住。
+        </p>
+
+        <h3 class="stage-subtitle">▎关于自爱的三个认知</h3>
+        <div class="key-points">
+          <div class="key-point">
+            <span class="key-num">1</span>
+            <p><strong>钱会顺着内心缺爱不自爱的缺口不断向外流失。</strong>想要不缺爱、留住钱、吸引钱，就要把对爱的期许、被爱的需要、赚钱的责任完完全全放在自己身上，直到长出向内求的能力。</p>
+          </div>
+          <div class="key-point">
+            <span class="key-num">2</span>
+            <p><strong>老天会精准地惩罚每一个不自己爱自己的人。</strong>其实是在用痛苦逼你回家，完成向内求的课题。</p>
+          </div>
+          <div class="key-point">
+            <span class="key-num">3</span>
+            <p><strong>你是这世上爱你的第一人，其余的人都只会是第二爱你的人。</strong></p>
+          </div>
+        </div>
+
+        <div class="final-box">
+          <p>这世上唯一正确的路径就是向内求。<br>向内求自强自立自信自爱是真理。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第五章：为什么只向内求 -->
+    <section class="stage" id="why">
+      <div class="stage-marker"><span>05</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">为什么“任何时候都一定”只向内求？</h2>
+
+        <div class="quote-box lavender">
+          <p><strong>因为向内求是“唯一可行的”“稳稳地”能够“真正”弥补缺爱缺钱的方式。</strong></p>
+        </div>
+
+        <h3 class="stage-subtitle">▎三个原因</h3>
+        <div class="logic-flow">
+          <div class="logic-step">
+            <span class="logic-step-num">1</span>
+            <div class="logic-step-content">
+              <h4>你会变强</h4>
+              <p>向内求会让你自强自立、有掌控感，所向披靡，平静，无所吊谓他人。向内求是百益无一害的道路，是最爽最有力量的道路，是永恒正确的道路，是最终抵达的终点。</p>
+            </div>
+          </div>
+          <div class="logic-step">
+            <span class="logic-step-num">2</span>
+            <div class="logic-step-content">
+              <h4>你会变满</h4>
+              <p>向内求时内心会变得非常饱满和充实，不再空洞匮乏。它是唯一可行的、稳稳的、能够真正弥补缺钱缺爱的道路。</p>
+            </div>
+          </div>
+          <div class="logic-step">
+            <span class="logic-step-num">3</span>
+            <div class="logic-step-content">
+              <h4>匮乏会终止</h4>
+              <p>只有长出向内求的能力，这种对爱的渴求和缺钱缺爱的匮乏状态才会彻底终止。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-box peach">
+          <p><strong>向外求没用。</strong>你过去一直在向外求上浪费了太多时间。这就是向内求的意义。</p>
+        </div>
+
+        <div class="quote-box sage">
+          <p><strong>🌟 放弃外求会神清气爽，信我所有内耗都会消失。</strong><br><span class="quote-note">彻底向内求会很爽、很有力量、很自由、干劲满满。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第六章：大字号结论 -->
+    <section class="stage" id="realization">
+      <div class="stage-marker"><span>06</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">你明白任何人的爱都不会超过你自己</h2>
+
+        <div class="quote-box rose">
+          <p><strong>从此，任何时候都会把对爱的期许、被爱的需要、赚钱的责任，只完完全全放在自己身上。</strong></p>
+        </div>
+
+        <p class="stage-lead">
+          当你真正放下外求，把责任收回到自己身上，一切都会自然发生。
+        </p>
+
+        <div class="logic-flow">
+          <div class="logic-step">
+            <span class="logic-step-num">1</span>
+            <div class="logic-step-content">
+              <p>你自然会向内求、向内找寻支持和爱，自然会自己爱自己。你的破碎和缺爱、向外渴求爱和求而不得的痛苦自然都会消失，因为你不求了。</p>
+            </div>
+          </div>
+          <div class="logic-step">
+            <span class="logic-step-num">2</span>
+            <div class="logic-step-content">
+              <p>你自然会有“你爱不爱我我都无所谓”的心态，不屑于任何他者之爱。</p>
+            </div>
+          </div>
+          <div class="logic-step">
+            <span class="logic-step-num">3</span>
+            <div class="logic-step-content">
+              <p>你自然会努力工作、专心赚钱，让自己生活事业越过越好；自然会特别想出人头地，自然会戾气消失。</p>
+            </div>
+          </div>
+          <div class="logic-step">
+            <span class="logic-step-num">4</span>
+            <div class="logic-step-content">
+              <p>你自然会深刻领悟：向内求是唯一可行的、稳稳的、能够真正弥补缺钱缺爱的方式。（你只是之前没有意识到这点）</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>向内求内心会饱满充实对应：</strong><br>1️⃣ 唯有一切向内求才能得到真正满足；<br>2️⃣ 唯有发展出向内求的能力，对爱的渴求才会消失。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全文核心 -->
+    <section class="stage" id="final">
+      <div class="stage-marker"><span>核</span></div>
+      <div class="stage-card">
+        <h2 class="stage-title">全文核心</h2>
+
+        <img class="stage-image" src="images/update5-abundance.png" alt="手绘知识笔记：金色道路与奔跑的人">
+
+        <div class="final-box">
+          <p>越早彻底领悟向外求没用，越早放弃外求，越早开始向内求耕耘自己的人生，人生就会越早开始开挂。</p>
+        </div>
+
+        <div class="quote-box sage">
+          <p><strong>“当你放弃外求，不断不断地一直向内求，你一定会得到属于你的丰盛和幸福。”🏃‍♀️</strong></p>
+        </div>
+
+        <a class="back-link" href="index.html">← 回到内在生长主页</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>更新5 · 本自具足向内求 · 停止外求，开始向内求</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

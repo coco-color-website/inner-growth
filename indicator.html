@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同花顺指标 · 主动SKDJ主力散户买卖点</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: "Consolas", "Monaco", "Courier New", monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 20px 0;
+      white-space: pre;
+    }
+
+    .indicator-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .indicator-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .indicator-card h2 {
+      margin-top: 0;
+      color: var(--ink);
+    }
+
+    .indicator-card ul {
+      padding-left: 22px;
+    }
+
+    .indicator-card li {
+      margin-bottom: 10px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .copy-btn {
+      background: var(--rose-deep);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: #c98a7a;
+    }
+
+    .download-link {
+      display: inline-block;
+      background: var(--sage-deep);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-left: 10px;
+    }
+
+    .download-link:hover {
+      background: #8fb589;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-pretitle">股票技术指标</p>
+      <h1 class="hero-title">主动SKDJ主力散户买卖点</h1>
+      <p class="hero-subtitle">同花顺副图指标</p>
+      <div class="hero-divider"></div>
+      <p class="hero-intro">结合主动买卖、SKDJ抄底逃顶、主力散户走势三个维度，生成综合买入卖出信号。</p>
+    </div>
+  </header>
+
+  <div class="indicator-section">
+    <div class="indicator-card">
+      <h2>📌 指标逻辑</h2>
+      <ul>
+        <li><strong>SKDJ 抄底：</strong>K 线上穿 D 线，且 K 值低于 20，视为超卖区反弹信号。</li>
+        <li><strong>SKDJ 逃顶：</strong>D 线上穿 K 线，且 K 值高于 80，视为超买区回落信号。</li>
+        <li><strong>主动买卖：</strong>主动买入量大于主动卖出量，说明资金主动进攻。</li>
+        <li><strong>主力散户：</strong>主力线上穿散户线，说明大资金进场；下穿则离场。</li>
+        <li><strong>买入信号：</strong>SKDJ 抄底 + 主动买占优 + 主力进场，三者共振。</li>
+        <li><strong>卖出信号：</strong>SKDJ 逃顶 + 主动卖占优 + 主力离场，三者共振。</li>
+      </ul>
+    </div>
+
+    <div class="indicator-card">
+      <h2>📋 指标源码</h2>
+      <p>点击下方按钮复制源码，或<a href="同花顺指标_主动SKDJ主力散户买卖点.txt" download class="download-link">下载 TXT 文件</a></p>
+      <button class="copy-btn" onclick="copyCode()">复制源码</button>
+      <pre class="code-block" id="indicator-code">// 指标名称：主动_SKDJ_主力散户综合买卖点
+// 适用软件：同花顺
+// 指标类型：副图指标
+// 核心逻辑：
+//   1. SKDJ 低位金叉 -&gt; 抄底信号
+//   2. SKDJ 高位死叉 -&gt; 逃顶信号
+//   3. 主动买 &gt; 主动卖 -&gt; 资金主动进攻
+//   4. 主力线 &gt; 散户线且金叉 -&gt; 主力进场
+//   5. 买入：SKDJ抄底 + 主动买占优 + 主力进场
+//   6. 卖出：SKDJ逃顶 + 主动卖占优 + 主力离场
+
+// 参数设置
+N:=9;
+M:=3;
+SKDJ_LOW:=20;
+SKDJ_HIGH:=80;
+
+// SKDJ 指标
+LOWV:=LLV(LOW,N);
+HIGHV:=HHV(HIGH,N);
+RSV:=(CLOSE-LOWV)/(HIGHV-LOWV+0.000001)*100;
+K:SMA(RSV,M,1),COLORWHITE,LINETHICK2;
+D:SMA(K,M,1),COLORYELLOW,LINETHICK2;
+J:3*K-2*D,COLORMAGENTA,LINETHICK1;
+
+// 画超买超卖区间参考线
+SKDJ_HIGH_LINE:SKDJ_HIGH,COLORGREEN,DOTLINE;
+SKDJ_LOW_LINE:SKDJ_LOW,COLORRED,DOTLINE;
+
+// 主动买卖指标
+主动买:IF(DYNAINFO(23)&gt;0, DYNAINFO(23), BUYVOL);
+主动卖:IF(DYNAINFO(24)&gt;0, DYNAINFO(24), SELLVOL);
+主动差:主动买-主动卖,COLORCYAN,LINETHICK1;
+主动差MA:EMA(主动差,5),COLORGREEN,LINETHICK1;
+
+// 主力散户走势指标
+主力净:IF(LARGEBUYVOL&gt;0 AND LARGESELLVOL&gt;0, LARGEBUYVOL-LARGESELLVOL,
+           IF(C&gt;O, VOL*(C-O)/(H-L+0.000001), -VOL*(O-C)/(H-L+0.000001)));
+
+散户净:IF(SMALLBUYVOL&gt;0 AND SMALLSELLVOL&gt;0, SMALLBUYVOL-SMALLSELLVOL,
+           IF(C&gt;O, -VOL*(C-O)/(H-L+0.000001)*0.3, VOL*(O-C)/(H-L+0.000001)*0.3));
+
+主力线:EMA(主力净,5),COLORRED,LINETHICK2;
+散户线:EMA(散户净,5),COLORBLUE,LINETHICK1;
+
+// 买卖信号
+抄底:=CROSS(K,D) AND K&lt;SKDJ_LOW;
+逃顶:=CROSS(D,K) AND K&gt;SKDJ_HIGH;
+主力进场:=CROSS(主力线,散户线);
+主力离场:=CROSS(散户线,主力线);
+主动买占优:=主动差&gt;主动差MA;
+主动卖占优:=主动差&lt;主动差MA;
+
+买入信号:抄底 AND 主动买占优 AND 主力进场,NODRAW;
+卖出信号:逃顶 AND 主动卖占优 AND 主力离场,NODRAW;
+
+DRAWICON(买入信号, K, 1);
+DRAWICON(卖出信号, K, 2);
+DRAWTEXT(买入信号, K-5, '买'), COLORRED;
+DRAWTEXT(卖出信号, K+5, '卖'), COLORGREEN;
+      </pre>
+    </div>
+
+    <div class="indicator-card">
+      <h2>⚙️ 安装步骤</h2>
+      <ol>
+        <li>打开同花顺客户端，点击顶部菜单【工具】→【公式管理】。</li>
+        <li>在公式管理器中，选择【技术指标】→【新建】。</li>
+        <li>指标名称填写：<strong>主动SKDJ主力散户买卖点</strong>。</li>
+        <li>指标类型选择：<strong>副图指标</strong>。</li>
+        <li>把上面的源码全部复制进去，点击【测试公式】→【确定】。</li>
+        <li>打开任意股票 K 线图，在副图指标中选择刚保存的指标即可。</li>
+      </ol>
+    </div>
+
+    <div class="indicator-card">
+      <h2>⚠️ 注意事项</h2>
+      <ul>
+        <li>本指标效果最佳需 <strong>Level-2 行情</strong>支持主动买卖/大单数据。</li>
+        <li>若无 Level-2，指标会自动 fallback 到外盘内盘和价格估算方案，精度下降。</li>
+        <li>任何技术指标都有滞后性和误判，建议结合 K 线形态、成交量、大盘环境综合判断。</li>
+        <li>不要根据单一信号满仓操作，建议作为辅助参考工具。</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>同花顺指标 · 主动SKDJ主力散户买卖点</p>
+  </footer>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById('indicator-code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('源码已复制到剪贴板');
+      }).catch(() => {
+        alert('复制失败，请手动复制');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+// 指标名称：主动_SKDJ_主力散户综合买卖点
+// 适用软件：同花顺
+// 指标类型：副图指标
+// 核心逻辑：
+//   1. SKDJ 低位金叉 -> 抄底信号
+//   2. SKDJ 高位死叉 -> 逃顶信号
+//   3. 主动买 > 主动卖 -> 资金主动进攻
+//   4. 主力线 > 散户线且金叉 -> 主力进场
+//   5. 买入：SKDJ抄底 + 主动买占优 + 主力进场
+//   6. 卖出：SKDJ逃顶 + 主动卖占优 + 主力离场
+
+// 参数设置
+N:=9;
+M:=3;
+SKDJ_LOW:=20;
+SKDJ_HIGH:=80;
+
+// SKDJ 指标
+LOWV:=LLV(LOW,N);
+HIGHV:=HHV(HIGH,N);
+RSV:=(CLOSE-LOWV)/(HIGHV-LOWV+0.000001)*100;
+K:SMA(RSV,M,1),COLORWHITE,LINETHICK2;
+D:SMA(K,M,1),COLORYELLOW,LINETHICK2;
+J:3*K-2*D,COLORMAGENTA,LINETHICK1;
+
+// 画超买超卖区间参考线
+SKDJ_HIGH_LINE:SKDJ_HIGH,COLORGREEN,DOTLINE;
+SKDJ_LOW_LINE:SKDJ_LOW,COLORRED,DOTLINE;
+
+// 主动买卖指标
+// DYNAINFO(23)=主动买入手数，DYNAINFO(24)=主动卖出手数，需 Level-2 数据
+// 若无 Level-2，可用 BUYVOL（外盘）- SELLVOL（内盘）近似替代
+主动买:IF(DYNAINFO(23)>0, DYNAINFO(23), BUYVOL);
+主动卖:IF(DYNAINFO(24)>0, DYNAINFO(24), SELLVOL);
+主动差:主动买-主动卖,COLORCYAN,LINETHICK1;
+主动差MA:EMA(主动差,5),COLORGREEN,LINETHICK1;
+
+// 主力散户走势指标
+// 有 Level-2 大单数据时优先使用，否则用价格估算
+主力净:IF(LARGEBUYVOL>0 AND LARGESELLVOL>0, LARGEBUYVOL-LARGESELLVOL,
+           IF(C>O, VOL*(C-O)/(H-L+0.000001), -VOL*(O-C)/(H-L+0.000001)));
+
+散户净:IF(SMALLBUYVOL>0 AND SMALLSELLVOL>0, SMALLBUYVOL-SMALLSELLVOL,
+           IF(C>O, -VOL*(C-O)/(H-L+0.000001)*0.3, VOL*(O-C)/(H-L+0.000001)*0.3));
+
+主力线:EMA(主力净,5),COLORRED,LINETHICK2;
+散户线:EMA(散户净,5),COLORBLUE,LINETHICK1;
+
+// 买卖信号
+抄底:=CROSS(K,D) AND K<SKDJ_LOW;
+逃顶:=CROSS(D,K) AND K>SKDJ_HIGH;
+主力进场:=CROSS(主力线,散户线);
+主力离场:=CROSS(散户线,主力线);
+主动买占优:=主动差>主动差MA;
+主动卖占优:=主动差<主动差MA;
+
+买入信号:抄底 AND 主动买占优 AND 主力进场,NODRAW;
+卖出信号:逃顶 AND 主动卖占优 AND 主力离场,NODRAW;
+
+DRAWICON(买入信号, K, 1);
+DRAWICON(卖出信号, K, 2);
+DRAWTEXT(买入信号, K-5, '买'), COLORRED;
+DRAWTEXT(卖出信号, K+5, '卖'), COLORGREEN;
