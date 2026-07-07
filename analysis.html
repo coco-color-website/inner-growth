@@ -209,6 +209,61 @@
       border: 1px solid rgba(232, 180, 168, 0.3);
     }
 
+    /* 视频区域 */
+    .video-section {
+      padding: 40px 24px;
+      background: linear-gradient(180deg, rgba(253,246,227,0.5) 0%, rgba(255,255,255,0.3) 100%);
+      border-bottom: 1px solid rgba(125, 114, 106, 0.1);
+    }
+    .video-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .video-section-title {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      margin: 0 0 24px;
+      color: var(--ink);
+    }
+    .video-monitor {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 12px 12px 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25), inset 0 0 0 2px rgba(255,255,255,0.1);
+    }
+    .video-monitor::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: #333;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+    }
+    .video-monitor::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 8px;
+      background: #2a2a2a;
+      border-radius: 4px;
+      margin: 16px auto 0;
+    }
+    .video-monitor video {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      background: #000;
+    }
+    @media (max-width: 640px) {
+      .video-monitor {
+        padding: 8px 8px 20px;
+      }
+    }
+
     /* 六个比喻卡片 */
     .theory-section {
       padding: 50px 24px;
@@ -786,6 +841,7 @@
     <p class="toc-nav-title">目录</p>
     <ul class="toc-nav-list">
       <li class="toc-nav-item"><a class="toc-nav-link" href="#top">顶部</a></li>
+      <li class="toc-nav-item"><a class="toc-nav-link" href="#video">观看视频</a></li>
       <li class="toc-nav-item"><a class="toc-nav-link" href="#proposition">核心命题</a></li>
       <li class="toc-nav-item"><a class="toc-nav-link" href="#theories">六个比喻</a></li>
       <li class="toc-nav-item"><a class="toc-nav-link" href="#love">一、他人的爱是破铜烂铁</a></li>
@@ -818,6 +874,19 @@
       </div>
     </div>
   </header>
+
+  <!-- 视频 -->
+  <section class="video-section" id="video">
+    <div class="video-section-inner">
+      <h2 class="video-section-title">📺 观看原视频</h2>
+      <div class="video-monitor">
+        <video controls preload="metadata" playsinline>
+          <source src="https://2122308406-space-h1towt.vod.cn-north-1.volcvideo.com/%E5%BE%AE%E4%BF%A1%E8%A7%86%E9%A2%912026-07-07_235051_748.mp4?preview=1&auth_key=1783437982-7e60a1f30a-0-40a866c83cac2ab56e65a42fc799c284" type="video/mp4">
+          <p>您的浏览器不支持视频播放，请<a href="https://2122308406-space-h1towt.vod.cn-north-1.volcvideo.com/%E5%BE%AE%E4%BF%A1%E8%A7%86%E9%A2%912026-07-07_235051_748.mp4?preview=1&auth_key=1783437982-7e60a1f30a-0-40a866c83cac2ab56e65a42fc799c284" target="_blank">点击这里观看</a>。</p>
+        </video>
+      </div>
+    </div>
+  </section>
 
   <!-- 核心命题 -->
   <section class="core-reminder" id="proposition">
