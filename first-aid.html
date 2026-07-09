@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情绪急救 · 内在生长</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .first-aid-body {
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .first-aid-hero {
+      text-align: center;
+      padding: 110px 24px 40px;
+    }
+
+    .first-aid-label {
+      display: inline-block;
+      background: var(--rose-deep);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .first-aid-title {
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 20px;
+      line-height: 1.2;
+    }
+
+    .first-aid-anchor {
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      color: #8b5e55;
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-weight: 600;
+    }
+
+    .first-aid-footer {
+      text-align: center;
+      padding: 0 20px 60px;
+    }
+
+    .first-aid-footer a {
+      display: inline-block;
+      color: #8b5e55;
+      text-decoration: none;
+      border-bottom: 2px solid var(--rose-deep);
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 2px;
+    }
+
+    .first-aid-breath {
+      max-width: 500px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .breath-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--cream) 100%);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #5a3d36;
+      font-weight: 700;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .first-aid-breath p {
+      margin: 0;
+      color: var(--ink-light);
+      font-size: 0.95rem;
+    }
+
+    .first-aid-reminder {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .first-aid-reminder-inner {
+      background: linear-gradient(135deg, var(--sage) 0%, #fff 100%);
+      border-radius: var(--radius);
+      padding: 34px 32px;
+      box-shadow: var(--shadow);
+      border-left: 8px solid var(--sage-deep);
+    }
+
+    .first-aid-reminder-core {
+      font-size: clamp(1.35rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: #3d5a38;
+      line-height: 1.6;
+      margin: 0 0 20px;
+      text-align: center;
+    }
+
+    .first-aid-reminder-guide {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+    }
+
+    .first-aid-reminder-guide p {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    .first-aid-reminder-guide p:last-child {
+      margin-bottom: 0;
+    }
+
+    .first-aid-reminder-guide strong {
+      color: #5a3d36;
+    }
+
+    .first-aid-reminder-words {
+      text-align: center;
+    }
+
+    .first-aid-reminder-words p {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .first-aid-reminder-words p:last-child {
+      margin-bottom: 0;
+      color: #8b4a3a;
+    }
+
+    @media (max-width: 640px) {
+      .first-aid-hero {
+        padding-top: 100px;
+      }
+
+      .first-aid-reminder-inner {
+        padding: 26px 22px;
+      }
+
+      .first-aid-reminder-core {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body class="first-aid-body">
+  <!-- 导航 -->
+  <nav class="toc">
+    <div class="toc-inner">
+      <a class="toc-link" href="index.html">主页</a>
+      <a class="toc-link" href="analysis.html">深度解读</a>
+      <a class="toc-link" href="flowchart.html">完整流程图</a>
+      <a class="toc-link" href="core-summary.html">核心总结</a>
+      <a class="toc-link active" href="first-aid.html">情绪急救</a>
+    </div>
+  </nav>
+
+  <header class="first-aid-hero">
+    <div class="first-aid-label">🆘 情绪急救</div>
+    <h1 class="first-aid-title">想不开时</h1>
+    <p class="first-aid-anchor">
+      任何人的爱都不会超过你自己的。<br>
+      你向内求，就能求到真的。
+    </p>
+  </header>
+
+  <!-- 呼吸提示 -->
+  <section class="first-aid-breath">
+    <div class="breath-circle">呼吸</div>
+    <p>先看这个圆圈，跟着它慢慢吸气、呼气。四次。</p>
+  </section>
+
+  <!-- 记住这句话 -->
+  <section class="first-aid-reminder">
+    <div class="first-aid-reminder-inner">
+      <p class="first-aid-reminder-core">
+        你只要爱自己，你这辈子不缺爱。<br>
+        也不会再渴求别人的爱。
+      </p>
+
+      <div class="first-aid-reminder-guide">
+        <p><strong>自救指南：</strong>当你因感到极度缺爱、缺钱、非常匮乏，向外求却无人给你，非常不开心、痛苦、愤怒、委屈、能量很低、悲观抑郁时——</p>
+        <p>一定要提醒自己：<strong>“你自己就有最真的，向内求就能求到。”</strong></p>
+        <p><strong>“刻意转向内求，只向内求”</strong>，就能瞬间从匮乏消沉状态走出来。</p>
+      </div>
+
+      <div class="first-aid-reminder-words">
+        <p>向内求是最好的心理医生。</p>
+        <p>向内求会救我千千万万次。</p>
+        <p>所有痛苦的根源，是向外求。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="first-aid-footer">
+    <p><a href="core-summary.html">状态好一点后，看完整版核心总结 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

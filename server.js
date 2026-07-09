@@ -13,7 +13,8 @@ const mime = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".gif": "image/gif",
-  ".svg": "image/svg+xml"
+  ".svg": "image/svg+xml",
+  ".mp4": "video/mp4"
 };
 
 const server = http.createServer((req, res) => {
