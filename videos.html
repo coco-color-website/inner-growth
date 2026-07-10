@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相关视频 · 内在生长</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .videos-body {
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .videos-hero {
+      text-align: center;
+      padding: 110px 24px 40px;
+    }
+
+    .videos-label {
+      display: inline-block;
+      background: var(--rose-deep);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .videos-title {
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 20px;
+      line-height: 1.2;
+    }
+
+    .videos-lead {
+      font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+      color: var(--ink-light);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .videos-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(139, 94, 85, 0.12);
+    }
+
+    .video-card video {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .videos-footer {
+      text-align: center;
+      padding: 0 20px 60px;
+    }
+
+    .videos-footer a {
+      display: inline-block;
+      color: #8b5e55;
+      text-decoration: none;
+      border-bottom: 2px solid var(--rose-deep);
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .videos-hero {
+        padding-top: 100px;
+      }
+    }
+  </style>
+</head>
+<body class="videos-body">
+  <!-- 导航 -->
+  <nav class="toc">
+    <div class="toc-inner">
+      <a class="toc-link" href="index.html">主页</a>
+      <a class="toc-link" href="analysis.html">深度解读</a>
+      <a class="toc-link" href="flowchart.html">完整流程图</a>
+      <a class="toc-link" href="core-summary.html">核心总结</a>
+      <a class="toc-link" href="first-aid.html">情绪急救</a>
+      <a class="toc-link active" href="videos.html">相关视频</a>
+    </div>
+  </nav>
+
+  <header class="videos-hero">
+    <div class="videos-label">🎬 相关视频</div>
+    <h1 class="videos-title">直观讲解</h1>
+    <p class="videos-lead">当你状态好一点，或者想看更直观的讲解时，可以看看这些视频。</p>
+  </header>
+
+  <section class="videos-section">
+    <div class="videos-grid">
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="videos/074ffa2d644352acc72a8bb79974651d.mp4" type="video/mp4">
+          你的浏览器不支持视频播放。
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="videos/1c2375a7eb2aafa3ecc433db2912b7a7.mp4" type="video/mp4">
+          你的浏览器不支持视频播放。
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="videos/a08edd32fa2659b7e5b2b2d0e26dfda3.mp4" type="video/mp4">
+          你的浏览器不支持视频播放。
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="videos/3d6c0fd412568032af35ac59f8c08c0d.mp4" type="video/mp4">
+          你的浏览器不支持视频播放。
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="videos/9acd93b3f5d1229f9bcb9842d7955a63.mp4" type="video/mp4">
+          你的浏览器不支持视频播放。
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <footer class="videos-footer">
+    <p><a href="core-summary.html">← 返回核心总结</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
